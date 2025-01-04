@@ -21,7 +21,8 @@
     "react-dom": "^18.3.1",
     "react-multi-date-picker": "^4.5.2",
     "react-simple-maps": "^3.0.0",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "telegraf": "^4.16.3"
   },
   "devDependencies": {
     "postcss": "^8.4.47",
