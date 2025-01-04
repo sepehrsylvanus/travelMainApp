@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .bg-radial-gradient {
+        background-image: radial-gradient(circle, var(--tw-gradient-stops));
+    }
+}
+
+
+
+:root::-webkit-scrollbar{
+    display: none;
+}
+:root *::-webkit-scrollbar{
+    display: none;
+}
+
+
+.box-shadow{
+    box-shadow: 0 10px 10px 1px rgba(12, 12, 13, 0.03);
+}
+.page-up-animation {
+    transition: all 1s;
+    transform: scaleY(1%);
+    transform-origin: bottom;
+    opacity: 0;
+    animation: forwards page-up 0.3s;
+}
+
+@keyframes page-up {
+    to{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
