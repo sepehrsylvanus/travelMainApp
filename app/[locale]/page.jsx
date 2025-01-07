@@ -7,24 +7,22 @@ import DiscoverCountries from "@/components/ui/discover-countries/discover-count
 import ExploreInterests from "@/components/ui/explore-interests/explore-interests";
 import MainLayout from "@/components/layout/mainLayout";
 
-import {useTranslations} from 'next-intl';
+import { useTranslations } from "next-intl";
 
-
-export default function Home({params}) {
-  const trans = useTranslations('translate');
-
+export default function Home({ params }) {
+  const trans = useTranslations("translate");
 
   return (
     <MainLayout locale={params.locale}>
       <section className="w-full page-up-animation flex flex-wrap">
-        <NavigationTop locale={params.locale} content={trans("title")}/>
+        <NavigationTop locale={params.locale} content={trans("title")} />
         <SearchBox trans={trans} />
         <section className="w-full flex flex-wrap bg-gradient-to-b pb-[70px] from-white to-main-white">
-          <ContinentsMenu/>
+          <ContinentsMenu />
           <TrendingPlans locale={params.locale} trans={trans} />
-          <PlansYouJoined locale={params.locale}  trans={trans} />
+          <PlansYouJoined locale={params.locale} trans={trans} />
           <DiscoverCountries locale={params.locale} trans={trans} />
-          <ExploreInterests  locale={params.locale} trans={trans}/>
+          <ExploreInterests locale={params.locale} trans={trans} />
         </section>
       </section>
     </MainLayout>

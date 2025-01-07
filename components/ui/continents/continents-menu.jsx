@@ -85,16 +85,6 @@ function ContinentsMenu() {
   if (data) {
     return (
       <section className="w-full flex items-center flex-wrap mt-5 ps-6 py-4">
-        {data ? (
-          <p
-            className="text-black text-wrap"
-            onClick={() => copyToClipboard(JSON.stringify(data))}
-          >
-            {JSON.stringify(data)}
-          </p>
-        ) : (
-          <p className="text-black">false</p>
-        )}
         <div
           className={
             "w-full items-center justify-start text-[12px] gap-2 flex flex-nowrap overflow-x-auto"
