@@ -7,7 +7,7 @@ import Step4Image from "@/public/intro/intro-4.svg";
 import ChevronIcon from "@/public/icons/chevron-right.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useDropzone } from "react-dropzone";
+// import { useDropzone } from "react-dropzone";
 import { Axios } from "@/utils/axios";
 import { cookieToken } from "@/actions/sessionActions";
 function Page() {
@@ -239,7 +239,7 @@ function Step5() {
         </button>
       </div>
 
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <div {...getRootProps()}>
           <input {...getInputProps()} />
           <div className="flexCenter flex-col text-center rounded-md">
@@ -268,7 +268,7 @@ function Step5() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="w-[290px] flex items-center justify-center flex-wrap">
         <h3 className="text-[26px] w-full text-center font-bold">
