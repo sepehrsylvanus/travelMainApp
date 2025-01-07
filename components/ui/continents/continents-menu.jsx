@@ -6,7 +6,6 @@ import { useRouter, useSearchParams } from "next/navigation"; // استفاده 
 import GlobalIconBlue from "@/public/icons/global-blue-icon.svg";
 import GlobalIcon from "@/public/icons/global-icon.svg";
 import { useTranslations } from "next-intl";
-import axios from "axios";
 
 function ContinentsMenu() {
   const trans = useTranslations("translate");

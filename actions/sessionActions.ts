@@ -12,4 +12,5 @@ export const cookieToken = async (token: string) => {
     maxAge: 60 * 60 * 24,
     expires: new Date(Date.now() + 60 * 60 * 24 * 1000),
   });
+  return true;
 };
