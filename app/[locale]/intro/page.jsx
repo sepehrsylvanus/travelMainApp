@@ -216,7 +216,7 @@ function Step5() {
     reader.readAsDataURL(acceptedFiles[0]);
   }, []);
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  //   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const router = useRouter();
   const handleFinalize = () => {
