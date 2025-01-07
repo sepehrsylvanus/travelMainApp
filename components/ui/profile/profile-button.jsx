@@ -6,6 +6,7 @@ import BlueTick from "@/public/icons/verify-icon.svg";
 import ArrowLeftIcon from "@/public/icons/arrow-left-icon.svg";
 
 function ProfileButton({ locale  }) {
+    
     return (
         <div className="w-full flex flex-wrap py-8">
             <Link href={`/${locale}/friend-profile`} scroll={false} prefetch className="w-full cursor-pointer flex justify-between items-stretch">

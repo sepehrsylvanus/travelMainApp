@@ -1,3 +1,4 @@
+"use client";
 import NavigationTop from "@/components/ui/navigation/navigation-top";
 import SearchBox from "@/components/ui/search-box/search-box";
 import ContinentsMenu from "@/components/ui/continents/continents-menu";
