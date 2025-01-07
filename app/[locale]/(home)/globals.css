@@ -3,35 +3,50 @@
 @tailwind utilities;
 
 @layer utilities {
-    .bg-radial-gradient {
-        background-image: radial-gradient(circle, var(--tw-gradient-stops));
-    }
+  .bg-radial-gradient {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
 }
 
+@layer base {
+  h1 {
+    @apply text-4xl font-bold leading-tight mb-4 text-gray-800;
+  }
 
+  h2 {
+    @apply text-3xl font-semibold leading-snug mb-3 text-gray-700;
+  }
 
-:root::-webkit-scrollbar{
-    display: none;
+  h3 {
+    @apply text-2xl font-medium leading-normal mb-2 text-gray-600;
+  }
+
+  h4 {
+    @apply text-xl font-medium leading-relaxed mb-2 text-gray-500;
+  }
 }
-:root *::-webkit-scrollbar{
-    display: none;
+
+:root::-webkit-scrollbar {
+  display: none;
+}
+:root *::-webkit-scrollbar {
+  display: none;
 }
 
-
-.box-shadow{
-    box-shadow: 0 10px 10px 1px rgba(12, 12, 13, 0.03);
+.box-shadow {
+  box-shadow: 0 10px 10px 1px rgba(12, 12, 13, 0.03);
 }
 .page-up-animation {
-    transition: all 1s;
-    transform: scaleY(1%);
-    transform-origin: bottom;
-    opacity: 0;
-    animation: forwards page-up 0.3s;
+  transition: all 1s;
+  transform: scaleY(1%);
+  transform-origin: bottom;
+  opacity: 0;
+  animation: forwards page-up 0.3s;
 }
 
 @keyframes page-up {
-    to{
-        opacity: 1;
-        transform: translateY(0%);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
