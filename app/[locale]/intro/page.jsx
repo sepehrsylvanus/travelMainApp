@@ -189,26 +189,8 @@ const Step4 = ({ setStep }) => {
   );
 };
 function Step5() {
-  const [data, setData] = useState();
-
+  const [initData, setInitData] = useState("");
   const [fileUrl, setFileUrl] = useState(null);
-  useEffect(() => {
-    const firstLayerInitData = Object.fromEntries(
-      new URLSearchParams(window.Telegram.WebApp.initData)
-    );
-
-    const initData = {};
-
-    for (const key in firstLayerInitData) {
-      try {
-        initData[key] = JSON.parse(firstLayerInitData[key]);
-      } catch {
-        initData[key] = firstLayerInitData[key];
-      }
-    }
-
-    setData(initData);
-  }, []);
 
   const onDrop = useCallback((acceptedFiles) => {
     const reader = new FileReader();
@@ -220,7 +202,7 @@ function Step5() {
 
   const router = useRouter();
   const handleFinalize = () => {
-    Axios.post("188.245.54.147:8081/api/user/register", data)
+    Axios.post("188.245.54.147:8081/api/user/register", JSON.stringify(data))
       .then((res) => {
         const setToken = cookieToken(res.data);
         if (setToken) {
@@ -231,6 +213,16 @@ function Step5() {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    const initData = window.Telegram.WebApp.initData;
+    setInitData(initData);
+  }, []);
+
+  useEffect(() => {
+    console.log(initData);
+  }, [initData]);
+
   return (
     <div className="w-full h-svh bg-white content-between px-4 justify-center flex flex-wrap relative">
       <div className="w-full flex p-2 items-center justify-end absolute top-2 right-2 z-10">
