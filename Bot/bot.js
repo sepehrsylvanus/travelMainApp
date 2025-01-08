@@ -1,7 +1,7 @@
 const { Telegraf } = require("telegraf");
 const TOKEN = "7957594893:AAEDcLY7-xcCJIrAKNG8xKVZ10_GwTOM4u4";
 const bot = new Telegraf(TOKEN);
-const url = "https://travel-main-app.vercel.app/intro";
+const url = "https://travel-main-app.vercel.app/en/intro";
 
 // Middleware to parse initData
 bot.use((ctx, next) => {
