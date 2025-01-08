@@ -204,7 +204,7 @@ function Step5() {
   const handleFinalize = () => {
     Axios.post("/user/register", JSON.stringify(initData))
       .then((res) => {
-        const setToken = cookieToken(res.data);
+        const setToken = cookieToken(res.data.token);
         if (setToken) {
           router.push("/");
         }
