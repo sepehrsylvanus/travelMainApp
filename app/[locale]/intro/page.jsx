@@ -202,7 +202,10 @@ function Step5() {
 
   const router = useRouter();
   const handleFinalize = () => {
-    Axios.post("188.245.54.147:8081/api/user/register", JSON.stringify(data))
+    Axios.post(
+      "188.245.54.147:8081/api/user/register",
+      JSON.stringify(initData)
+    )
       .then((res) => {
         const setToken = cookieToken(res.data);
         if (setToken) {
