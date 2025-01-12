@@ -8,20 +8,36 @@ import ChevronIcon from "@/public/icons/chevron-right.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 // import { useDropzone } from "react-dropzone";
-import { Axios } from "@/utils/axios";
-import { cookieToken } from "@/actions/sessionActions";
+
 import CustomStep5 from "@/components/guidPages/CustomStep5";
+import { getToken } from "@/actions/sessionActions";
 function Page() {
+  const router = useRouter();
   const [step, setStep] = useState(1);
-  return (
-    <>
-      {step === 1 && <Step1 setStep={setStep} />}
-      {step === 2 && <Step2 setStep={setStep} />}
-      {step === 3 && <Step3 setStep={setStep} />}
-      {step === 4 && <Step4 setStep={setStep} />}
-      {step === 5 && <Step5 setStep={setStep} />}
-    </>
-  );
+  const [showIntro, setShowIntro] = useState(false);
+  useEffect(() => {
+    const ifShowIntro = async () => {
+      const token = await getToken();
+      if (!token) {
+        setShowIntro(true);
+      } else {
+        router.push("/");
+      }
+    };
+    ifShowIntro();
+  }, []);
+
+  if (showIntro) {
+    return (
+      <>
+        {step === 1 && <Step1 setStep={setStep} />}
+        {step === 2 && <Step2 setStep={setStep} />}
+        {step === 3 && <Step3 setStep={setStep} />}
+        {step === 4 && <Step4 setStep={setStep} />}
+        {step === 5 && <Step5 setStep={setStep} />}
+      </>
+    );
+  }
 }
 
 export default Page;

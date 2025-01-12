@@ -1,21 +1,30 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/shadcn/button";
+import { Input } from "@/components/ui/shadcn/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/ui/shadcn/select";
+import { cookieToken, regiserUser, register } from "@/actions/sessionActions";
+import { useRouter } from "next/navigation";
 
-export default function CustomStep5() {
-  const [avatar, setAvatar] = (useState < string) | (null > null);
+export default function IntroForm() {
+  const [avatar, setAvatar] = useState(null);
+  const [initData, setInitData] = useState("");
   const [isDragging, setIsDragging] = useState(false);
-  const fileInputRef = useRef < HTMLInputElement > null;
+  const fileInputRef = useRef(null);
+  const router = useRouter();
+  useEffect(() => {
+    const initData = window.Telegram.WebApp.initData;
+    setInitData(initData);
+  }, []);
 
   const handleImageClick = () => {
     fileInputRef.current?.click();
@@ -57,9 +66,18 @@ export default function CustomStep5() {
       handleFile(file);
     }
   };
-
+  const handleRegister = async () => {
+    const register = await regiserUser(initData);
+    console.log({ register });
+    if (register) {
+      const saveToken = await cookieToken(register);
+      if (saveToken) {
+        router.push("/");
+      }
+    }
+  };
   return (
-    <div className="p-6 max-w-md mx-auto space-y-8">
+    <div className="p-6 max-w-md mx-auto space-y-8 bg-white">
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Your avatar</h2>
         <div
@@ -157,12 +175,15 @@ export default function CustomStep5() {
         </Select>
       </div>
 
-      <Button
-        className="w-14 h-14 rounded-2xl fixed bottom-6 right-6"
-        variant="default"
-      >
-        <ChevronDown className="w-6 h-6 rotate-180" />
-      </Button>
+      <div className="w-full flex p-2 items-center justify-end">
+        <Button
+          className="text-lg flex items-center justify-center w-[60px] h-[60px] rounded-xl bg-gray-100 font-medium active:scale-95 duration-100"
+          variant="default"
+          onClick={() => handleRegister()}
+        >
+          <ChevronDown className="w-6 h-6 rotate-180" />
+        </Button>
+      </div>
     </div>
   );
 }
