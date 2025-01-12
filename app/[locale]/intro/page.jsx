@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 // import { useDropzone } from "react-dropzone";
 import { Axios } from "@/utils/axios";
 import { cookieToken } from "@/actions/sessionActions";
+import CustomStep5 from "@/components/guidPages/CustomStep5";
 function Page() {
   const [step, setStep] = useState(1);
   return (
@@ -189,109 +190,5 @@ const Step4 = ({ setStep }) => {
   );
 };
 function Step5() {
-  const [initData, setInitData] = useState("");
-  const [fileUrl, setFileUrl] = useState(null);
-
-  const onDrop = useCallback((acceptedFiles) => {
-    const reader = new FileReader();
-    reader.onload = (e) => setFileUrl(e.target.result);
-    reader.readAsDataURL(acceptedFiles[0]);
-  }, []);
-
-  //   const { getRootProps, getInputProps } = useDropzone({ onDrop });
-
-  const router = useRouter();
-  const handleFinalize = () => {
-    Axios.post("/user/register", JSON.stringify(initData))
-      .then((res) => {
-        const setToken = cookieToken(res.data.token);
-        if (setToken) {
-          router.push("/");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    const initData = window.Telegram.WebApp.initData;
-    setInitData(initData);
-  }, []);
-
-  useEffect(() => {
-    console.log(initData);
-  }, [initData]);
-
-  return (
-    <div className="w-full h-svh bg-white content-between px-4 justify-center flex flex-wrap relative">
-      <div className="w-full flex p-2 items-center justify-end absolute top-2 right-2 z-10">
-        <button className="text-lg font-medium active:scale-95 duration-100">
-          Skip
-        </button>
-      </div>
-
-      {/* <div className="mt-4">
-        <div {...getRootProps()}>
-          <input {...getInputProps()} />
-          <div className="flexCenter flex-col text-center rounded-md">
-            <p className="flex-1 font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
-              JPG, PNG, GIF, SVG, WEBM, MP3, MP4. Max 100mb.
-            </p>
-            <div className="my-12 w-full flex justify-center">
-              {fileUrl ? (
-                <img
-                  src={fileUrl}
-                  alt="Uploaded File"
-                  width={100}
-                  height={100}
-                  className="rounded-md"
-                />
-              ) : (
-                <Image
-                  src={"/images/upload.png"}
-                  width={100}
-                  height={100}
-                  objectFit="contain"
-                  alt="File upload"
-                  className="rounded-md"
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      <div className="w-[290px] flex items-center justify-center flex-wrap">
-        <h3 className="text-[26px] w-full text-center font-bold">
-          Welcome to Travel Bff
-        </h3>
-        <p className="text-sm px-1 w-full text-gray-600 mt-6">
-          Are you ready to explore the world? 🌍✨ Our app is your passport to
-          unforgettable journeys
-        </p>
-      </div>
-
-      <div className="w-full">
-        <p className="font-bold mb-2">Your name is</p>
-        <input
-          type="text"
-          className="placeholder:text-gray-400 font-light p-3 w-full bg-transparent rounded-2xl border focus:outline-0 placeholder:text-sm"
-          placeholder="Your full name"
-        />
-      </div>
-      <div className="w-full">
-        <p className="font-bold mb-2">Where you located</p>
-        <select className="bg-white border border-gray-100 text-sm  focus:outline-0 w-full px-2 py-4 focus:border-none focus:ring-1 rounded-xl"></select>
-      </div>
-      <div className="w-full flex p-2 items-center justify-end">
-        <button
-          onClick={() => handleFinalize()}
-          className="text-lg flex items-center justify-center w-[60px] h-[60px] rounded-xl bg-gray-100 font-medium active:scale-95 duration-100"
-        >
-          <Image src={ChevronIcon} loading={"eager"} alt={""} />
-        </button>
-      </div>
-    </div>
-  );
+  return <CustomStep5 />;
 }
