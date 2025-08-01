@@ -9,9 +9,24 @@ import ExploreInterests from "@/components/ui/explore-interests/explore-interest
 import MainLayout from "@/components/layout/mainLayout";
 
 import { useTranslations } from "next-intl";
+import { useEffect } from "react";
+import { getToken } from "@/actions/auth";
+import { getUserProfile } from "@/actions/user";
 
 export default function Home({ params }) {
   const trans = useTranslations("translate");
+
+  useEffect(() => {
+    const initData = window.Telegram.WebApp.initData;
+    console.log("🚀 ~ Home ~ initData:", initData);
+    const fetchToken = async () => {
+      const token = await getToken(initData);
+      console.log("🚀 ~ Home ~ token:", token);
+      await getUserProfile();
+    };
+    fetchToken();
+    // setInitData(initData);
+  }, []);
 
   return (
     <MainLayout locale={params.locale}>

@@ -70,7 +70,6 @@ function ContinentsMenu() {
           "w-full items-center justify-start text-[12px] gap-2 flex flex-nowrap overflow-x-auto"
         }
       >
-        <p>Here it comes</p>
         {continents.map((continent, index) => (
           <div
             key={index}
