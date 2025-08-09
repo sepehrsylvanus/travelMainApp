@@ -31,7 +31,7 @@ export default function Home({ params }) {
 
   return (
     <MainLayout locale={params.locale}>
-      <Link href={`/${params.locale}/browse-countries`}>Browser countries</Link>
+      <Link href={`/${params.locale}/dashboard`}>dashboard</Link>
       <section className="w-full page-up-animation flex flex-wrap">
         <NavigationTop locale={params.locale} content={trans("title")} />
         <SearchBox trans={trans} />
