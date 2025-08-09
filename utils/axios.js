@@ -1,3 +1,4 @@
+import { fetchToken } from "@/actions/auth";
 import { getToken } from "@/actions/sessionActions";
 import axios from "axios";
 
@@ -7,7 +8,7 @@ export const Axios = axios.create({
 Axios.interceptors.request.use(
   async (config) => {
     // Retrieve the token
-    const token = await getToken();
+    const token = await fetchToken();
 
     if (token) {
       // Set the token in the Authorization header

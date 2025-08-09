@@ -15,7 +15,6 @@ export const getTravels = async (category, offset) => {
         },
       }
     );
-    console.log("🚀 ~ getTravels ~ res:", res.data.data);
     return res.data.data;
   } catch (error) {
     throw new Error(error.message);
