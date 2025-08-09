@@ -1,51 +1,32 @@
-"use client"; // اضافه کردن این خط برای مشخص کردن که کامپوننت یک Client Component است
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation"; // استفاده از next/navigation
+import { useRouter, useSearchParams } from "next/navigation";
 import GlobalIconBlue from "@/public/icons/global-blue-icon.svg";
 import GlobalIcon from "@/public/icons/global-icon.svg";
 import { useTranslations } from "next-intl";
+import { getContinents } from "@/actions/homepage";
 
 function ContinentsMenu() {
   const trans = useTranslations("translate");
+  const [continents, setContinents] = useState([]);
+  const correctContinents = continents.map((continent) => {
+    return {
+      ...continent,
+      Image: continent.Image === "-" && "https://picsum.photos/id/237/1080/720",
+    };
+  });
+  useEffect(() => {
+    const func = async () => {
+      const continents = await getContinents();
+      setContinents(continents);
+    };
+    func();
+  }, []);
 
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  const continents = [
-    { name: "All", icon: GlobalIconBlue, isActive: true, query: "all" },
-    {
-      name: "North Africa",
-      icon: GlobalIcon,
-      isActive: false,
-      query: "north-africa",
-    },
-    {
-      name: "Middle East",
-      icon: GlobalIcon,
-      isActive: false,
-      query: "middle-east",
-    },
-    {
-      name: "North Africa",
-      icon: GlobalIcon,
-      isActive: false,
-      query: "north-africa",
-    },
-    {
-      name: "North Africa",
-      icon: GlobalIcon,
-      isActive: false,
-      query: "north-africa",
-    },
-    {
-      name: "North Africa",
-      icon: GlobalIcon,
-      isActive: false,
-      query: "north-africa",
-    },
-  ];
 
   const handleFilterClick = (query) => {
     const params = new URLSearchParams(searchParams);
@@ -70,7 +51,7 @@ function ContinentsMenu() {
           "w-full items-center justify-start text-[12px] gap-2 flex flex-nowrap overflow-x-auto"
         }
       >
-        {continents.map((continent, index) => (
+        {correctContinents.map((continent, index) => (
           <div
             key={index}
             onClick={() => handleFilterClick(continent.query)}
@@ -80,8 +61,8 @@ function ContinentsMenu() {
                 : "text-gray-500"
             } gap-1 p-2 rounded-full`}
           >
-            <Image src={continent.icon} width={15} height={15} alt={""} />
-            {trans(continent.name)}
+            <Image src={continent.Image} width={15} height={15} alt={""} />
+            {continent.Name}
           </div>
         ))}
       </div>
