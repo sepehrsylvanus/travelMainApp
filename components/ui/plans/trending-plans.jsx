@@ -41,7 +41,6 @@ function TrendingPlans({ trans, locale }) {
     "trending",
     0
   );
-  console.log("🚀 ~ TrendingPlans ~ travels:", travels);
   return (
     <section className="w-full flex flex-wrap">
       <div className="w-full flex flex-wrap font-medium items-center justify-between ps-6 p-2">

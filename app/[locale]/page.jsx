@@ -19,10 +19,8 @@ export default function Home({ params }) {
 
   useEffect(() => {
     const initData = window.Telegram.WebApp.initData;
-    console.log("🚀 ~ Home ~ initData:", initData);
     const fetchToken = async () => {
       const token = await getToken(initData);
-      console.log("🚀 ~ Home ~ token:", token);
       await getUserProfile();
     };
     fetchToken();
@@ -31,7 +29,9 @@ export default function Home({ params }) {
 
   return (
     <MainLayout locale={params.locale}>
-      <Link href={`/${params.locale}/dashboard`}>dashboard</Link>
+      <Link href={`/${params.locale}/explore-interests`}>
+        explore-interests
+      </Link>
       <section className="w-full page-up-animation flex flex-wrap">
         <NavigationTop locale={params.locale} content={trans("title")} />
         <SearchBox trans={trans} />

@@ -10,7 +10,6 @@ import { useParams } from "next/navigation";
 
 function Page() {
   const { data: countries = [] } = useGetCountries();
-  console.log("🚀 ~ Page ~ countries:", countries);
   const trans = useTranslations("translate");
   const { slug: id } = useParams();
 
