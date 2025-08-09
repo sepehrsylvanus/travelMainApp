@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { getToken } from "@/actions/auth";
 import { getUserProfile } from "@/actions/user";
+import Link from "next/link";
 
 export default function Home({ params }) {
   const trans = useTranslations("translate");
@@ -30,6 +31,7 @@ export default function Home({ params }) {
 
   return (
     <MainLayout locale={params.locale}>
+      <Link href={`/${params.locale}/browse-countries`}>Browser countries</Link>
       <section className="w-full page-up-animation flex flex-wrap">
         <NavigationTop locale={params.locale} content={trans("title")} />
         <SearchBox trans={trans} />
