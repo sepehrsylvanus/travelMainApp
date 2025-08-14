@@ -8,30 +8,20 @@ import DiscoverCountries from "@/components/ui/discover-countries/discover-count
 import ExploreInterests from "@/components/ui/explore-interests/explore-interests";
 import MainLayout from "@/components/layout/mainLayout";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect } from "react";
-import { getToken } from "@/actions/auth";
+import { fetchToken, getToken } from "@/actions/auth";
 import { getUserProfile } from "@/actions/user";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useFetchToken } from "@/hooks/useToken";
 
 export default function Home({ params }) {
   const trans = useTranslations("translate");
 
-  useEffect(() => {
-    const initData = window.Telegram.WebApp.initData;
-    const fetchToken = async () => {
-      const token = await getToken(initData);
-      await getUserProfile();
-    };
-    fetchToken();
-    // setInitData(initData);
-  }, []);
-
   return (
     <MainLayout locale={params.locale}>
-      <Link href={`/${params.locale}/explore-interests`}>
-        explore-interests
-      </Link>
+      <Link href={`/${params.locale}/profile`}>profile</Link>
       <section className="w-full page-up-animation flex flex-wrap">
         <NavigationTop locale={params.locale} content={trans("title")} />
         <SearchBox trans={trans} />
