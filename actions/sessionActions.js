@@ -23,11 +23,11 @@ export const cookieToken = async (token) => {
 };
 
 export const regiserUser = async (initData) => {
-  console.log(initData);
   try {
     const res = await Axios.post("/user/register", {
       initData,
     });
+    console.log("🚀 ~ regiserUser ~ res:", res.data);
     return res.data.data.token;
   } catch (error) {
     console.log(error.message);
