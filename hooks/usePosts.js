@@ -1,4 +1,4 @@
-import { getUserPosts } from "@/actions/feed";
+import { getAllPosts, getUserPosts } from "@/actions/feed";
 import { useQuery } from "@tanstack/react-query";
 
 export const useGetUserPosts = () => {
@@ -7,6 +7,16 @@ export const useGetUserPosts = () => {
     queryFn: async () => {
       const posts = await getUserPosts();
       return posts;
+    },
+  });
+};
+export const useGetPublicPosts = (travel, offset = 0) => {
+  return useQuery({
+    queryKey: ["getPublicPosts", travel, offset],
+    queryFn: async () => {
+      const publicPosts = await getAllPosts(travel, offset);
+      console.log("🚀 ~ useGetPublicPosts ~ publicPosts:", publicPosts);
+      return publicPosts;
     },
   });
 };
