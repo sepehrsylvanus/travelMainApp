@@ -13,7 +13,8 @@ export const useGetUserPosts = () => {
 export const useGetPublicPosts = (travel, offset = 0) => {
   return useQuery({
     queryKey: ["getPublicPosts", travel, offset],
-    queryFn: async () => {
+    queryFn: async ({ queryKey }) => {
+      const [, travel, offset] = queryKey;
       const publicPosts = await getAllPosts(travel, offset);
       console.log("🚀 ~ useGetPublicPosts ~ publicPosts:", publicPosts);
       return publicPosts;
