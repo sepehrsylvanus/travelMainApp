@@ -7,7 +7,7 @@ import GlobalIconBlue from "@/public/icons/global-blue-icon.svg";
 import GlobalIcon from "@/public/icons/global-icon.svg";
 import { useTranslations } from "next-intl";
 import { getContinents } from "@/actions/homepage";
-import { Divide, Loader } from "lucide-react";
+import { Divide, Earth, Loader } from "lucide-react";
 
 function ContinentsMenu() {
   const trans = useTranslations("translate");
@@ -74,7 +74,8 @@ function ContinentsMenu() {
                   : "text-gray-500"
               } gap-1 p-2 rounded-full`}
             >
-              <Image src={continent.Image} width={15} height={15} alt={""} />
+              <Earth width={15} height={15} />
+              {/* <Image src={continent.Image} width={15} height={15} alt={""} /> */}
               {continent.Name}
             </div>
           ))}
