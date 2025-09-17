@@ -57,24 +57,26 @@ function Page() {
             <Loader className="animate-spin" />
           </div>
         ) : (
-          filteredCountries.map((continent, index) => (
+          filteredCountries.map((country, index) => (
             <Link
-              href={`/${locale}` + continent.href}
+              href={`/${locale}/countries/${country.Name.toLowerCase()}`}
               passHref
               prefetch
               key={index}
               className="w-full my-2 flex flex-wrap items-center justify-between"
             >
               <figure className="w-5/6 gap-2 flex items-center">
-                <Image
-                  src={continent.Image}
-                  alt="country-image"
-                  className="rounded-full"
-                  width={36}
-                  height={36}
-                />
+                <div className="relative w-9 h-9">
+                  <Image
+                    src={country.Image}
+                    alt={`${country.Name}-image`}
+                    className="rounded-full object-cover"
+                    fill
+                    sizes="36px"
+                  />
+                </div>
                 <figcaption className="flex w-auto line-clamp-1 truncate">
-                  {continent.Name}
+                  {country.Name}
                 </figcaption>
               </figure>
               <div className="w-1/6 flex items-center justify-end">
