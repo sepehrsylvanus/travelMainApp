@@ -61,49 +61,53 @@ function TrendingPlans({ trans, locale }) {
           </div>
         ) : (
           travels.map((item, index) => (
-            <figure
-              key={index}
-              className="min-w-[135px] h-[145px] rounded-xl box-shadow overflow-hidden flex flex-wrap content-start justify-between"
-            >
-              <Image
-                src={item.Image}
-                width={135}
-                height={87}
-                className="rounded-xl"
-                alt={`trend-${index + 1}`}
-              />
-              <figcaption
-                className={"w-full h-[58px] p-2 flex flex-wrap content-between"}
+            <Link href={`/${locale}/plan/${item.ID}`}>
+              <figure
+                key={index}
+                className="min-w-[135px] h-[145px] rounded-xl box-shadow overflow-hidden flex flex-wrap content-start justify-between"
               >
-                <strong className="w-full flex h-2/3 text-[10px] line-clamp-2">
-                  {item.Name}
-                </strong>
-                <div
+                <Image
+                  src={item.Image}
+                  width={135}
+                  height={87}
+                  className="rounded-xl"
+                  alt={`trend-${index + 1}`}
+                />
+                <figcaption
                   className={
-                    "w-full flex mt-1 h-1/3 items-center justify-between"
+                    "w-full h-[58px] p-2 flex flex-wrap content-between"
                   }
                 >
-                  <div className="w-1/2 text-[8px] gap-1 text-gray-500 flex items-center justify-start">
-                    <Image
-                      src={PersonIcon}
-                      width={8}
-                      height={8}
-                      alt={"person-icon"}
-                    />
-                    {item.Count ?? 0}
+                  <strong className="w-full flex h-2/3 text-[10px] line-clamp-2">
+                    {item.Name}
+                  </strong>
+                  <div
+                    className={
+                      "w-full flex mt-1 h-1/3 items-center justify-between"
+                    }
+                  >
+                    <div className="w-1/2 text-[8px] gap-1 text-gray-500 flex items-center justify-start">
+                      <Image
+                        src={PersonIcon}
+                        width={8}
+                        height={8}
+                        alt={"person-icon"}
+                      />
+                      {item.Count ?? 0}
+                    </div>
+                    <div className="w-1/2 text-[8px] gap-1 text-gray-500 flex items-center justify-end">
+                      <Image
+                        src={LocationIcon}
+                        width={8}
+                        height={8}
+                        alt={"location-icon"}
+                      />
+                      {item.Country.Name}
+                    </div>
                   </div>
-                  <div className="w-1/2 text-[8px] gap-1 text-gray-500 flex items-center justify-end">
-                    <Image
-                      src={LocationIcon}
-                      width={8}
-                      height={8}
-                      alt={"location-icon"}
-                    />
-                    {item.Country.Name}
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
+                </figcaption>
+              </figure>
+            </Link>
           ))
         )}
       </section>

@@ -35,21 +35,23 @@ function DiscoverCountries({ trans, locale }) {
           </div>
         ) : (
           clearCountries.map((country, index) => (
-            <figure
-              key={index}
-              className="min-w-[135px] flex-grow flex items-center justify-center h-[87px] rounded-xl relative"
-            >
-              <Image
-                src={country.Image}
-                alt={country.Name}
-                className="filter saturate-50"
-                width={135}
-                height={87}
-              />
-              <figcaption className="absolute text-[10px] text-white top-1/2 -translate-y-1/2">
-                {country.Name}
-              </figcaption>
-            </figure>
+            <Link href={`/${locale}/country/${country.ID}`}>
+              <figure
+                key={index}
+                className="min-w-[135px] flex-grow flex items-center justify-center h-[87px] rounded-xl relative"
+              >
+                <Image
+                  src={country.Image}
+                  alt={country.Name}
+                  className="filter saturate-50"
+                  width={135}
+                  height={87}
+                />
+                <figcaption className="absolute text-[10px] text-white top-1/2 -translate-y-1/2">
+                  {country.Name}
+                </figcaption>
+              </figure>
+            </Link>
           ))
         )}
       </section>

@@ -2,7 +2,6 @@
 import React from "react";
 import PageTitleBackButton from "@/components/ui/page-title-back-button/page-title-back-button";
 import Image from "next/image";
-import { interestsStaticData } from "@/utils/mock/mock-data";
 import { useGetInterest } from "@/hooks/useInterest";
 import { Loader } from "lucide-react";
 
@@ -29,15 +28,18 @@ function Page() {
           cleareInterests?.map((item, index) => (
             <figure
               key={index}
-              className="flex h-[64px] w-[327px] rounded-lg relative"
+              className="flex h-[64.57px] w-[327px] rounded-lg relative overflow-hidden"
             >
-              <Image
-                src={item?.Image}
-                alt={"images"}
-                width={327}
-                height={64.57}
-              />
-              <figcaption className="absolute top-1/2  font-bold text-white left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="relative w-[327px] h-[64.57px]">
+                <Image
+                  src={item?.Image}
+                  alt={`${item?.Name}-image`}
+                  fill
+                  className="rounded-lg object-cover"
+                  sizes="(max-width: 327px) 100vw, 327px"
+                />
+              </div>
+              <figcaption className="absolute top-1/2 font-bold text-white left-1/2 -translate-x-1/2 -translate-y-1/2">
                 {item?.Name}
               </figcaption>
             </figure>

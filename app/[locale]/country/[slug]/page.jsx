@@ -12,6 +12,7 @@ function Page() {
   const { data: countries = [] } = useGetCountries();
   const trans = useTranslations("translate");
   const { slug: id } = useParams();
+  console.log({ id });
 
   const country = countries?.find((c) => c.ID === id);
 

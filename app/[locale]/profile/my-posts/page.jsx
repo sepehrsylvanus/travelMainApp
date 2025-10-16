@@ -72,7 +72,7 @@ function Page() {
                 <figure className="w-auto gap-2 flex">
                   <Image
                     loading={"lazy"}
-                    src={post.Image}
+                    src={post.Image ?? "https://picsum.photos/id/237/1080/720"}
                     alt={""}
                     width={36}
                     height={36}

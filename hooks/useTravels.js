@@ -1,4 +1,4 @@
-import { getTravels } from "@/actions/travel";
+import { getTravel, getTravels } from "@/actions/travel";
 import { useQuery } from "@tanstack/react-query";
 
 export const useGetTravels = (category, offset) => {
@@ -9,6 +9,17 @@ export const useGetTravels = (category, offset) => {
 
       const travels = await getTravels(category, offset);
       return travels;
+    },
+  });
+};
+
+export const useGetTravel = (id) => {
+  return useQuery({
+    queryKey: ["getTravel", id],
+    queryFn: async ({ queryKey }) => {
+      const [_, id] = queryKey;
+      const travel = await getTravel(id);
+      return travel;
     },
   });
 };

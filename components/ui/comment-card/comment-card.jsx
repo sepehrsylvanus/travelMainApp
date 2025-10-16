@@ -38,7 +38,12 @@ function CommentCard({ trans, post }) {
     <article className="w-full flex content-start flex-wrap pb-5 border-b">
       <div className="w-full flex flex-wrap p-2 items-center justify-between">
         <figure className="w-auto gap-2 flex">
-          <Image src={post.Image} alt={""} width={36} height={36} />
+          <Image
+            src={"https://picsum.photos/id/237/1080/720"}
+            alt={""}
+            width={36}
+            height={36}
+          />
           <figcaption className="w-1/2 flex flex-wrap">
             <h5 className="text-sm">{post.User.FirstName}</h5>
             <h6 className="text-[10px] text-gray-500">{post.Country.Name}</h6>
